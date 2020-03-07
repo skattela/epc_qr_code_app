@@ -17,7 +17,7 @@ jobs:
           docker_layer_caching: false
       # with credentials stored in the UI
       - run: |
-          echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+          echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
       # build the application image
       - run: docker build -t skattela/epc_qr_code_app_circleci:$CIRCLE_BRANCH .
 

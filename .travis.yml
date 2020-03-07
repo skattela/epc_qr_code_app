@@ -1,16 +1,11 @@
-travis encrypt --pro SOMEVARlanguage: python
+language: python
 services:
   - docker
 before_install:
-  - docker build -t skattela/epc_qrcode_travis .
+  - docker build -t skattela/epc_qr_code_app .
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-
-deploy:
-  provider: script
-  script: bash docker_push
-  on:
-    branch: master
+  - docker push skattela/epc_qr_code_app
 
 env:
   global:
