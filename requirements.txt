@@ -1,0 +1,10 @@
+connexion
+Pillow
+qrcode
+tornado
+python-dotenv
+pyopenssl
+slackclient
+pyzbar
+pyzbar[scripts]
+names

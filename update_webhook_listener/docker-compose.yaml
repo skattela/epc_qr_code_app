@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  api:
+    build: .
+    container_name: update_webhook_listener
+    ports:
+      - 88:88
+
+networks:
+  default:
+    external:
+      name: api

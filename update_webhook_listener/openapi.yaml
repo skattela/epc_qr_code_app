@@ -1,0 +1,29 @@
+openapi: "3.0.0"
+
+info:
+  title: EPC-QR-Code
+  version: "1.0"
+
+servers:
+  - url: {{api_url}}
+    description: Server
+
+paths:
+  /rest/update:
+    post:
+      summary: Trigger update
+      operationId: main.update
+      responses:
+        '200':
+          description: Response
+      security:
+        - api_key: []
+
+
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-Auth
+      in: query
+      x-apikeyInfoFunc: main.apikey_auth
