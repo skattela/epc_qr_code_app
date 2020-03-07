@@ -5,6 +5,13 @@ before_install:
   - docker build -t skattela/epc_qrcode_travis .
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
+
 env:
   global:
     - secure: Cij35J9MJ0dX/Hr1PsSzM0pxk9zjgT8NKOJ+aaf1moxvbb/bMsdW1cJc7IAAMAjbfBHBOGM1XFlE9i7PAhlOV4TqH21/RJPpITFujG1QkoATD09U2/BF6UGU/Wv48q5zCrs9Dh09RcynHTEtE3z0cAQcE+JfeU7uSi+xhAzqKwYlKa4ejtlXSnB+uvfvB5i7KWY52njRSzi2xW+sOAfje2SnC8QeJ87Y3da3OxIjGs1XjAhAio9eq57vH/wvqd4vDwkvtKuDNjAGvzHLZmi+wzkUhIB5DRChk9UHT+VEX4tcNHlBy37ETUWVabZ0nDqO+b4LCk2uO3lePvJIRPycr85pLLzqVja8ke+hH22TvcInUcD9kUx1euKvLuOkM9LWH9NOMelarqSa0Qc22/Ugcp+1kFjrugxql2dvxP4lZWbqIYGjlKMWomBK7ivpwHz1SkLq+SFGBbjDvHC8SYewa18vTmpLS1w8DWN0TFKT9Zr9zXDhklIJVGD5QBgoLAabLgbOGzCt/E5MfsKW7FpAJ0AjrD71aSoGjEl2jU9oG7UTk+60qcOVMSutdm9AAl3ejDnhS1/iq8BasCXs5gV93pZ6B9gO4Or9p7JVDRx2JRzVcJmpzVeeQhMgSdrUjySlV0KK5npIIRxVBBpM/A9UpWYB54izpxtEBksSyXHvXDs=
