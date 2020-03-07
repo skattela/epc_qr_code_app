@@ -8,8 +8,6 @@ jobs:
       - run:
           name: Test
           command: |
-            virtualenv epc_qr_code_app
-            . venv/bin/activate
             pip install --no-cache-dir -r requirements.txt
 
 
