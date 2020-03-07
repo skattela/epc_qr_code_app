@@ -2,12 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.4
+      - image: circleci/python:3.7
     steps:
       - checkout
       - run:
           name: Test
           command: |
+            virtualenv epc_qr_code_app
+            . epc_qr_code_app/bin/activate
             pip install --no-cache-dir -r requirements.txt
 
 
@@ -17,7 +19,7 @@ jobs:
       - run: |
           echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
       # build the application image
-      - run: docker build -t skattela/epc_qr_code_app_circleci:$CIRCLE_BRANCH .
+      - run: docker build -t skattela/epc_qr_code_app:$CIRCLE_BRANCH .
 
       # deploy the image
-      - run: docker push skattela/epc_qr_code_app_circleci:$CIRCLE_BRANCH
+      - run: docker push skattela/epc_qr_code_app:$CIRCLE_BRANCH
