@@ -65,15 +65,6 @@ paths:
                 format: binary
       security:
         - api_key: []
-  /rest/update:
-    post:
-      summary: Trigger update
-      operationId: main.update
-      responses:
-        '200':
-          description: Response
-      security:
-        - api_key: []
 
 components:
   securitySchemes:

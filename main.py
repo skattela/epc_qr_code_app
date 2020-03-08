@@ -33,7 +33,7 @@ def webhook(jira_ticket):
         file = open("epc_qrcode.png", "rb")
         jira.attach_to_jira(jira_ticket, file)
         if os.getenv("slack_api_token"):
-            slack_bot.send_file_to_slack("epc_qrcode.png", title=jira_ticket)
+            slack_bot.send_file_to_slack("epc_qrcode.png", title=jira_ticket, slack_channel=os.getenv("slack_channel"))
             return content, 200
         else:
             print("Slack integration not properly setup")

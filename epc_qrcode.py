@@ -47,7 +47,7 @@ def generate_epc_qrcode_with_info(content):
     amount = content.get("amount")
     reference = content.get("reference")
 
-    fnt = ImageFont.truetype('LT_50138.ttf', 20)
+    fnt = ImageFont.truetype('Arial.ttf', 20)
     text = "Name: %s\nIBAN: %s\nAmount: EUR%.2f\nReference: %s" % (name, iban, amount, reference)
     if content.get("additional_text"):
         text += "\n\n%s" % content.get("additional_text")
